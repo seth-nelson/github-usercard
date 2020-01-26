@@ -87,3 +87,21 @@ axios.get('https://api.github.com/users/seth-nelson/followers')
 
 
 const cardsDiv = document.querySelector('.cards')
+
+function createCard(user) {
+
+  const card = document.createElement('div');
+  const img = document.createElement('img');
+  const info = document.createElement('div');
+  const name = document.createElement('h3');
+  const username = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileUrl = document.createElement('a');
+  const followers = document.createElement('p');
+  const folloring = document.createElement('p');
+  const repositories = document.createElement('p');
+  const bio = document.createElement('p');
+
+  card.appendChild
+}
