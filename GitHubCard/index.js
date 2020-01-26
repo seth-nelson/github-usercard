@@ -6,6 +6,7 @@ axios
   .get ('https://api.github.com/users/seth-nelson')
   .then (response => {
     console.log(response);
+    cardsDiv.apphendChild(createCard(response.data))
   })
 
   .catch = (error => {
@@ -34,6 +35,27 @@ axios
 */
 
 const followersArray = [];
+const urlArray = [];
+
+axios.get('https://api.github.com/users/seth-nelson/followers')
+  .then(response => {
+    console.log(response);
+    response.data.forEach((element) => {
+      urlArray.push(`$(element.url)`)
+    })
+      urlArray.forEach((element) => {
+        axios.get(element)
+          ,then(response => {
+            cardsDiv.appendChild(createCard(response.data));
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      })
+  })
+  .catch(error => {
+    console.log(error);
+  })
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -62,3 +84,6 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+
+const cardsDiv = document.querySelector('.cards')
